@@ -3,3 +3,5 @@
 .Rproj.user
 .venv
 .Rhistory
+
+**/*.quarto_ipynb
