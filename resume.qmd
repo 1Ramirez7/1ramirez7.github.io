@@ -1,186 +1,223 @@
 ---
 format: 
-  pdf: 
+  pdf:
     documentclass: article
-    geometry:
-      - top=12mm
-      - left=16mm
-      - right=16mm
-      - bottom=5mm
-      - heightrounded
-    fontfamily: libertinus
-    colorlinks: true
-    fontsize: '16'
+    papersize: a4
+    fontsize: 10pt
+    linestretch: 0.5 # 1 is default
+    geometry: top=0.25in, bottom=0.5in, left=0.45in, right=0.25in # 1in, 0.75in
+    keep-tex: false  # Disables keeping .tex
+    embed-resources: true # Embed images directly in the PDF
+    pdf-engine: pdflatex
+    self-contained: true
     include-in-header: 
       text: |
-        \usepackage{multicol}
-        \usepackage{lipsum}
-        \usepackage{hyperref}
-        \pagestyle{empty}
-        \setlength{\multicolsep}{2pt plus 1.0pt minus 0.75pt}
-        \setlength{\columnsep}{3em}
+       <!-- % for gridlines. dont comment this out --> 
+        <!-- \usepackage{eso-pic} -->
+        <!-- \usepackage{xcolor} -->
+
+        <!-- % Add vertical and horizontal gridlines -->
+        <!-- \AddToShipoutPictureBG*{ -->
+        <!--   \AtPageLowerLeft{ -->
+        <!--     \color{gray!30} -->
+        <!--     \linethickness{0.1pt} -->
+        <!--     \multiput(0,0)(0,20){60}{\line(1,0){600}} % horizontal lines every 20pt -->
+        <!--     \multiput(0,0)(20,0){30}{\line(0,1){800}} % vertical lines every 20pt -->
+        <!--   } -->
+        <!-- }  % end of gridline yml code. I can do Ctrl+Shift+ C to comment this out -->
+        
+        \pagestyle{empty} % disables page numbering
+        \setlength{\parskip}{4pt}
+        \setlength{\parindent}{0pt}
+        
+        % --- bullet width (• + following space) --- 787
+        \newlength{\bulletwd} % 787
+        \settowidth{\bulletwd}{\textbullet\hspace{0.4em}} % <- 0.4em control spacing between bullet and word % 787
+
+
+        % Custom indent levels and other commans
+        \newcommand{\levelA}{\noindent\hspace*{0.5em}\hangindent=0.5em\hangafter=1}
+        \newcommand{\levelB}{\noindent\hspace*{1em}\hangindent=1em\hangafter=1}
+        \newcommand{\levelC}{\noindent\hspace*{1.5em}\hangindent=1.5em\hangafter=1}
+        \newcommand{\levelD}{\noindent\hspace*{2em}\hangindent=2em\hangafter=1}
+        
+        \newcommand{\paraspace}{\vspace*{3pt}} % control section space. 4 is default
+        
+        
+        % ---------- level A with bullet 787 ----------
+        \newcommand{\levelAitem}{\noindent\hspace*{0.5em}\makebox[\bulletwd][l]{\textbullet\ }
+          \hangindent=\dimexpr0.9em+\bulletwd\relax\hangafter=1} % dimexpr controls space for second line and after
+                  % ---------- level B with bullet 787 ----------
+        \newcommand{\levelBitem}{\noindent\hspace*{1em}\makebox[\bulletwd][l]{\textbullet\ }
+          \hangindent=\dimexpr1.3em+\bulletwd\relax\hangafter=1} % dimexpr controls space for second line and after
+        % usage for bullet line
+        % \levelAitem \textbf{Relevant Coursework:} Financial Ec...
+        % plain line (no bullet)
+        % \levelA GPA Last 60 Major Credits 3.4
+
+        
+execute:
+  warning: false
 ---
 
-<!-- TITLE -->
-\begin{center}
-{\fontsize{35}{50}\selectfont \textbf{Eduardo I. Ramirez}}
-\end{center}
 
-<!-- CONTACT INFO -->
-\begin{center}
-Eduardo.er.ramirez@gmail.com \quad | \quad \href{https://linkedin.com/in/eduardo-ramirez-31198b1b8}{linkedin.com/in/eduardo-ramirez-eduardo1} \quad | \quad \href{https://1ramirez7.github.io/}{Portfolio: 1ramirez7.github.io}
-\end{center}
-\vspace{12pt}
 
-<!-- PROFILE -->
-\begin{large}
-{\bf PROFILE}
-\vspace{3pt}
-\hrule
-\end{large}
-Dedicated student at Brigham Young University-Idaho pursuing a Bachelor of Science in Financial Economics with minors in Data Science and Cluster in Statistics. Passionate about leveraging data-driven strategies for business growth and efficiency.
-
-\vspace{4pt}
-
-<!-- EDUCATION -->
-\begin{large}
-{\bf EDUCATION}
-\vspace{3pt}
-\hrule
-\begin{multicols}{2}
-  \begin{flushleft}{\bf Brigham Young University-Idaho}\end{flushleft}
-  \begin{flushright}Rexburg, ID\end{flushright}
-\end{multicols}
-\vspace{-0.17cm}
-\begin{multicols}{2}
-  \begin{flushleft}B.Sc. Financial Economics \textit{(Expected July 2025)}\end{flushleft}
-  \begin{flushright}Minor: Data Science, Cluster: Statistics\end{flushright}
-\end{multicols}
-\end{large}
-
-\vspace{4pt}
-
-<!-- EXPERIENCE -->
-\begin{large}
-{\bf PROFESSIONAL EXPERIENCE}
-\vspace{3pt}
-\hrule
-\end{large}
-
-\begin{multicols}{2}
-  \begin{flushleft}{\bf Economics Tutor}\end{flushleft}
-  \begin{flushright}Rexburg, ID\end{flushright}
-\end{multicols}
-\vspace{-0.17cm}
-\begin{multicols}{2}
-  \begin{flushleft}\text{Brigham Young University-Idaho}\end{flushleft}
-  \begin{flushright}Jul 2024 -- Present\end{flushright}
-\end{multicols}
-- Tutored undergraduate students in core economics courses, boosting exam scores and concept mastery.
-
-\vspace{4pt}
-
-\begin{multicols}{2}
-  \begin{flushleft}{\bf Teaching Assistant -- Investment Analysis}\end{flushleft}
-  \begin{flushright}Rexburg, ID\end{flushright}
-\end{multicols}
-\vspace{-0.17cm}
-\begin{multicols}{2}
-  \begin{flushleft}\text{Brigham Young University-Idaho}\end{flushleft}
-  \begin{flushright}Sep 2024 -- Dec 2024\end{flushright}
-\end{multicols}
-- Assisted faculty with lectures, grading, and student consultations on equity valuation projects.
-
-\vspace{4pt}
-
-\begin{multicols}{2}
-  \begin{flushleft}{\bf Teaching Assistant -- Microeconomics}\end{flushleft}
-  \begin{flushright}Rexburg, ID\end{flushright}
-\end{multicols}
-\vspace{-0.17cm}
-\begin{multicols}{2}
-  \begin{flushleft}\text{Brigham Young University-Idaho}\end{flushleft}
-  \begin{flushright}Sep 2023 -- Dec 2023\end{flushright}
-\end{multicols}
-- Led review sessions and graded problem sets for intermediate microeconomic theory.
-
-\vspace{4pt}
-
-\begin{multicols}{2}
-  \begin{flushleft}{\bf Analytic Research}\end{flushleft}
-  \begin{flushright}St Anthony, ID\end{flushright}
-\end{multicols}
-\vspace{-0.17cm}
-\begin{multicols}{2}
-  \begin{flushleft}\text{E\&J Investments LLC}\end{flushleft}
-  \begin{flushright}Mar 2023 -- Mar 2024\end{flushright}
-\end{multicols}
-- Conducted financial analyses and identified investment opportunities, enhancing strategic decision-making and profitability.
-
-\vspace{4pt}
-
-\begin{multicols}{2}
-  \begin{flushleft}{\bf Store Manager}\end{flushleft}
-  \begin{flushright}Chula Vista, CA\end{flushright}
-\end{multicols}
-\vspace{-0.17cm}
-\begin{multicols}{2}
-  \begin{flushleft}\text{Petro Consulting Services LLC}\end{flushleft}
-  \begin{flushright}Jan 2015 -- Feb 2017\end{flushright}
-\end{multicols}
-- Implemented proprietary fleet management and IT solutions, significantly improving operational efficiency and sales performance.
-
-- Managed staffing, scheduling, HR operations, and sales analytics, demonstrating leadership under pressure.
-
-\vspace{4pt}
-
-<!-- VOLUNTEER EXPERIENCE -->
-\begin{large}
-{\bf VOLUNTEER EXPERIENCE}
-\vspace{3pt}
-\hrule
-\end{large}
-- Secretary, Investment Society, BYU-Idaho \hfill (May 2022 -- Aug 2022)
-
-- President, Investment Society, BYU-Idaho \hfill (Sep 2022 -- Dec 2022; Sep 2024 -- Apr 2025)
-
-- Bloomberg Specialist, Investment Society, BYU-Idaho \hfill (Sep 2023 -- Apr 2024)
-
-- Full-time Missionary, Cape Verde, Africa \hfill (Dec 2017 -- Jan 2020)
-
-- Volunteer, Homeless Shelter, San Diego, CA \hfill (Jan 2020 -- Aug 2020)
-
-\vspace{4pt}
-
-<!-- SKILLS -->
-\begin{large}
-{\bf SKILLS}
-\vspace{3pt}
-\hrule
-\end{large}
-\vspace{4pt}
-- \textbf{Languages}: Spanish, English, Portuguese
-
-- \textbf{Technical Skills}: Excel, R, Stata, SQL, HTML, Python, Quarto, JS, Shiny, Tableau
-
-- \textbf{Competencies}: Management, Leadership, Strategic Thinking, Data Analysis
-
-\vspace{4pt}
-
-<!-- CERTIFICATIONS -->
-\begin{large}
-{\bf CERTIFICATIONS}
-\vspace{3pt}
-\hrule
-\end{large}
-- Bloomberg Market Concepts \hfill Dec 2022
-
-- Environmental Social Governance, Bloomberg \hfill Apr 2025
-
-- Spreadsheet Modeling \hfill Sep 2022
-
-\vspace{4pt}
 
 \begin{center}
-\textit{Last updated: May 2025}
+{\fontsize{25pt}{25pt}\selectfont \textbf{Eduardo Ramirez}}
 \end{center}
+
+\begin{center}
+(858)250-9343 | eduardo.er.ramirez@gmail.com | linkedin.com/in/ramirez-eduardo1/ | https://1ramirez7.github.io/
+\end{center}
+
+\vspace{1pt} <!-- control space between Name and personal information -->
+
+
+<!-- ---------------------EDUCATION SECTION---------------------------------------- -->
+
+\fontsize{12pt}{14pt}\selectfont \textbf{{\fontsize{14pt}{16pt}\selectfont E}DUCATION}
+
+\vspace{4pt}
+\hrule
+\vspace{2pt}
+
+\levelA \textbf{Bachelor of Science - Financial Economics} \hfill Apr 2026
+
+\levelA \textit{Brigham Young University-Idaho} \hfill Rexburg, ID
+
+\levelB GPA Last 60 Major Credits 3.5
+
+\levelA Minor - Data Science | Cluster - Statistics
+
+
+<!-- ---------------------PROFESSIONAL EXPERIENCE SECTION------------------ -->
+
+\paraspace
+
+\fontsize{12pt}{14pt}\selectfont \textbf{{\fontsize{14pt}{16pt}\selectfont P}ROFESSIONAL {\fontsize{14pt}{16pt}\selectfont E}XPERIENCE}
+
+\vspace{4pt}
+\hrule
+\vspace{2pt}
+
+<!-- Brigham Young job -->
+
+\levelA \textbf{Economics Tutor \& Teaching Assistant – Economics \& Finance Courses} \hfill Sep 2023 – Apr 2026
+
+\levelB \textit{Brigham Young University–Idaho} \hfill Rexburg, ID
+
+\levelB • Tutor  students in Microeconomics, Macroeconomics, International Econ and Statistics
+
+\levelB • Collaborated with faculty to develop a standardized repository of financial formulas and practice questions, improving information accessibility and reducing time spent on manual lookups
+
+<!-- E&J Job  -->
+
+\levelA \textbf{Financial Analyst (Intern)} \hfill Mar 2023 – Mar 2024
+
+\levelB \textit{E}&\textit{J Investments LLC} \hfill St. Anthony, ID
+
+\levelB • Identify Three high-return investment opportunities, influencing firm’s capital allocation
+
+\levelB • Modeled fixed and variable costs per machine cycle, identifying $45K in potential annual savings
+
+\levelB • Built pro forma ROI analyses to evaluate $256K+ equipment purchase, projecting payback of 34 months.
+
+<!--  Main Street job-->
+
+\levelA \textbf{Store Manager} \hfill Feb 2016 – Feb 2017
+
+\levelB \textit{Petro Consulting Services LLC} \hfill Chula Vista, CA
+
+\levelBitem Implemented fleet management and IT solutions, reducing customer service delays by 30% and increasing sales revenue by $2M per quarter.
+
+\levelBitem Managed staffing and HR operations for 10+ employees; optimized sales analytics to improve efficiency
+
+
+<!-- ---------------------PROJECTS SECTION------------------ -->
+
+\paraspace
+
+\fontsize{12pt}{14pt}\selectfont \textbf{{\fontsize{14pt}{16pt}\selectfont P}ROJECTS}
+
+\vspace{4pt}
+\hrule
+\vspace{2pt}
+
+<!-- ECON SOLOW and AD/AS MODELS -->
+
+\levelAitem Developed and deployed Solow-Growth and AD-AS models to forecast GDP growth under multiple scenarios, reducing manual workflow steps and enabling faster, repeatable analysis for strategic reviews.
+
+<!-- DISCRETE EVENT SIMULATION FOR AIR FORCE -->
+
+\levelAitem Hill Air Force Base - Contract \hfill Fall 2025
+\begin{itemize}
+  \item Designed a Discrete Event Simulation (DES) system for supply chain operations and depot logistics
+  \item Served as Project Manager to bridge the gap between technical developers and external leadership, ensuring all deliverables remained aligned with strategic operational requirements
+\end{itemize}
+
+<!-- ---------------------LEADERSHIP & VOLUNTEER EXPEREINCE SECTION------------------ -->
+
+\paraspace
+
+\fontsize{12pt}{14pt}\selectfont \textbf{{\fontsize{14pt}{16pt}\selectfont L}EADERSHIP \&
+{\fontsize{14pt}{16pt}\selectfont V}OLUNTEER
+{\fontsize{14pt}{16pt}\selectfont E}XPERIENCE}
+
+\vspace{4pt}
+\hrule
+\vspace{2pt}
+
+<!-- ------LEAD & VOL EXP.------INVESMENT SOCIETY---------- -->
+
+\levelA \textbf{Investment Society, BYU-Idaho} \hfill May 2022 - Apr 2025
+
+\levelB • \textbf{President}: Led team in Bloomberg Terminal analyses of 15+ firms, examining financial statements, interest rates, risk, yields, and market/economic trends
+
+\levelB • \textbf{Bloomberg Specialist}: Led teams in Bloomberg's Global Trading Challenge (Top 10% out of 2,520 teams); delivered peer instruction on terminal functions and investment strategy (Fall 2024)
+
+\levelB • \textbf{Secretary}: Managed announcements, scheduled speakers, and led leadership meetings (Spring 2022)
+
+<!-- ------LEAD & VOL EXP.------MCVP mission---------- -->
+\levelA \textbf{The Church of Jesus Christ of Latter-Day Saints} \hfill Praia, Cape Verde
+
+\levelB \textit{Full-Time Volunteer Representative} \hfill Dec 2017 – Jan 2020 
+
+\levelB • Exerted 75+ hours/week of community service, religious instructions and leadership training
+
+\levelB • Trained ~125 missionaries across 8 regions, enhancing discipline, productivity, and goal achievement
+
+<!-- ------LEADERSHIP & VOLUNTEER EXP.------Stand up for kids---------- -->
+\levelA \textbf{Stand up for Kids} \hfill Jan 2017 – Oct 2017
+
+\levelB • Provided meals, hygiene supplies, and outreach support to 25+ youth weekly at a homeless shelter
+
+
+<!-- ---------------------TECHNICAL SKILLS  AND CERTIFICATIONS SECTION------------------ -->
+
+\paraspace
+
+\fontsize{12pt}{14pt}\selectfont \textbf{{\fontsize{14pt}{16pt}\selectfont T}ECHNICAL
+{\fontsize{14pt}{16pt}\selectfont S}KILLS
+{\fontsize{14pt}{16pt}\selectfont C}ERTIFICATIONS AND 
+{\fontsize{14pt}{16pt}\selectfont O}THER}
+
+\vspace{4pt}
+\hrule
+\vspace{2pt}
+
+<!--  -->
+
+\levelA • \textbf{Programming:} Advanced: Python (Streamlit), R (Shiny) \textbf{|} Working Knowledge: SQL, JavaScript
+
+\levelA • \textbf{Data \& BI Tools:} Advanced: Excel, Quarto \textbf{|} Working Knowledge: Stata, Tableau
+
+\levelA • \textbf{Analytics \& Modeling:} Time Series Analysis, Discrete-Event Simulation, ML (scikit-learn, Keras)
+
+\levelA • \textbf{Certifications:} Bloomberg Market Concepts, Bloomberg ESG, Harvard Spreadsheet Modeling
+
+\levelA • Language: Spanish(Native), Portuguese(Fluent), Barlavento Kriol(Advanced), Sotavento Kriol(Advanced)
+
+
+<!-- can adjust this to manage line spacing: {\fontsize{15pt}{17pt}  -->
+<!-- for example changing to {14pt}{16pt} will shorten title line spacing -->
